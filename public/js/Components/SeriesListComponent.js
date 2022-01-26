@@ -1,16 +1,21 @@
+/* eslint-disable no-new */
 import Component from "./Component.js";
+import SerieComponent from "./SerieComponent.js";
 
 class SeriesListComponent extends Component {
   title;
   number;
+  series;
 
-  constructor(parentElement, className, title, number) {
+  constructor(parentElement, className, title, number, series) {
     super(parentElement, className, "section");
 
     this.title = title;
     this.number = number;
+    this.series = series;
 
     this.generateHTML();
+    this.generateSerie();
   }
 
   generateHTML() {
@@ -21,6 +26,13 @@ class SeriesListComponent extends Component {
             <ul class="series-list">
             </ul>
     `;
+  }
+
+  generateSerie() {
+    this.series.forEach((serie) => {
+      const parentElement = this.element.querySelector(".series-list");
+      new SerieComponent(parentElement, "serie", serie);
+    });
   }
 }
 

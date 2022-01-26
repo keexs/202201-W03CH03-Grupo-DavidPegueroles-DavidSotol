@@ -1,13 +1,18 @@
+/* eslint-disable no-new */
 import Component from "./Component.js";
 import SeriesListComponent from "./SeriesListComponent.js";
+import series from "../series.js";
 
 class PageComponent extends Component {
+  filteredWatchedSeries;
+  filteredPendingSeries;
+
   constructor(parentElement) {
     super(parentElement, "container", "div");
 
     this.generateHTML();
-    this.pendingSeries();
-    this.watchedSeries();
+    this.filterSeries();
+    this.seriesList();
   }
 
   generateHTML() {
@@ -25,16 +30,32 @@ class PageComponent extends Component {
           `;
   }
 
-  pendingSeries() {
-    const parentElement = this.element.querySelector(".series");
+  filterSeries() {
+    this.filteredWatchedSeries = series.filter((serie) => serie.watched);
 
-    new SeriesListComponent(parentElement, "series", "Pending Series", 0);
+    this.filteredPendingSeries = series.filter((serie) => !serie.watched);
   }
 
-  watchedSeries() {
+  seriesList() {
     const parentElement = this.element.querySelector(".series");
+    const filteredPendingSeriesLength = this.filteredPendingSeries.length;
+    const filteredWatchedSeriesLength = this.filteredWatchedSeries.length;
 
-    new SeriesListComponent(parentElement, "series", "Watched Series", 0);
+    new SeriesListComponent(
+      parentElement,
+      "series",
+      "Pending Series",
+      filteredPendingSeriesLength,
+      this.filteredPendingSeries
+    );
+
+    new SeriesListComponent(
+      parentElement,
+      "series",
+      "Watched Series",
+      filteredWatchedSeriesLength,
+      this.filteredWatchedSeries
+    );
   }
 }
 
