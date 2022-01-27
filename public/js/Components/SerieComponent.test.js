@@ -36,9 +36,14 @@ describe("Given SerieComponent", () => {
       };
       const container = document.createElement("div");
       const title = "The Sopranos";
-      new SerieComponent(container, "class", serie, "li");
+      const serieComponent = new SerieComponent(
+        container,
+        "class",
+        serie,
+        "li"
+      );
 
-      expect(serie.name).toBe(title);
+      expect(serieComponent.serie.title).toBe(title);
     });
   });
   describe("When it recives a serie with 'mageSubstitute' poster", () => {
@@ -62,7 +67,7 @@ describe("Given SerieComponent", () => {
         "li"
       );
 
-      expect(serie.poster).toBe(imgPoster);
+      expect(serieComponent.serie.poster).toBe(imgPoster);
     });
   });
 });
