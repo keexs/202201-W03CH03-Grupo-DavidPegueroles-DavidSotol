@@ -5,9 +5,9 @@ describe("Given a Component component", () => {
     test("Then it should create a div element to the dom", () => {
       const container = document.createElement("div");
 
-      new Component(container, "prueba", "div");
+      new Component(container, "test", "div");
 
-      expect(container.querySelector(".prueba")).not.toBeNull();
+      expect(container.querySelector(".test")).not.toBeNull();
     });
   });
 });
