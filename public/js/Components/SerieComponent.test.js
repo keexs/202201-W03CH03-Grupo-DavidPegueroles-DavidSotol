@@ -43,7 +43,7 @@ describe("Given SerieComponent", () => {
         "li"
       );
 
-      expect(serieComponent.serie.title).toBe(title);
+      expect(serieComponent.serie.name).toBe(title);
     });
   });
   describe("When it recives a serie with 'mageSubstitute' poster", () => {
