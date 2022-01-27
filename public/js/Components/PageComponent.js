@@ -1,4 +1,3 @@
-/* eslint-disable no-new */
 import Component from "./Component.js";
 import SeriesListComponent from "./SeriesListComponent.js";
 import series from "../series.js";
