@@ -7,7 +7,7 @@ describe("Given a Component component", () => {
 
       new Component(container, "test", "div");
 
-      expect(container.querySelector(".test")).not.toBeNull();
+      expect(container.querySelector("div")).not.toBeNull();
     });
   });
 });
