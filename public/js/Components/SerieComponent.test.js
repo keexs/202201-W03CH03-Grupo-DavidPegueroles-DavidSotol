@@ -16,12 +16,7 @@ describe("Given SerieComponent", () => {
 
       const container = document.createElement("div");
 
-      const serieComponent = new SerieComponent(
-        container,
-        "class",
-        serie,
-        "li"
-      );
+      new SerieComponent(container, "class", serie, "li");
 
       expect(container.querySelector("li")).not.toBeNull();
     });
@@ -41,12 +36,7 @@ describe("Given SerieComponent", () => {
       };
       const container = document.createElement("div");
       const title = "The Sopranos";
-      const serieComponent = new SerieComponent(
-        container,
-        "class",
-        serie,
-        "li"
-      );
+      new SerieComponent(container, "class", serie, "li");
 
       expect(serie.name).toBe(title);
     });
