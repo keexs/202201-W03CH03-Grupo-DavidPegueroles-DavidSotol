@@ -32,22 +32,13 @@ class PageComponent extends Component {
 
   filterSeries() {
     this.filteredWatchedSeries = series.filter((serie) => serie.watched);
-
     this.filteredPendingSeries = series.filter((serie) => !serie.watched);
   }
 
   seriesList() {
     const parentElement = this.element.querySelector(".series");
-    const filteredPendingSeriesLength = this.filteredPendingSeries.length;
     const filteredWatchedSeriesLength = this.filteredWatchedSeries.length;
-
-    new SeriesListComponent(
-      parentElement,
-      "series",
-      "Pending Series",
-      filteredPendingSeriesLength,
-      this.filteredPendingSeries
-    );
+    const filteredPendingSeriesLength = this.filteredPendingSeries.length;
 
     new SeriesListComponent(
       parentElement,
@@ -55,6 +46,14 @@ class PageComponent extends Component {
       "Watched Series",
       filteredWatchedSeriesLength,
       this.filteredWatchedSeries
+    );
+
+    new SeriesListComponent(
+      parentElement,
+      "series",
+      "Pending Series",
+      filteredPendingSeriesLength,
+      this.filteredPendingSeries
     );
   }
 }
